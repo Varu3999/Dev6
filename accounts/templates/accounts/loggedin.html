@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+{% if messages%}
+    {% for message in messages%}
+    <div class = "alert {% if message.tags %}alert-{% if message.tags == 'error' %}danger{%else%}{{message.tags}}{%endif%}"{%endif%}>{{message}}</div>
+    {%endfor%}
+{%endif%}
+<html lang="en">
+<head>
+    <title>{{fullname}}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <style>@import url('https://fonts.googleapis.com/css?family=Risque');</style>
+    <style>
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+</style>
+</head>
+<body background = "http://3.bp.blogspot.com/-0WscyTWyJFg/UO2C181VdwI/AAAAAAAAEDw/aPie6NI8Rzg/s1600/note_paper_background-light_brown.jpg">
+<nav class = "navbar navbar-default">
+    <div class = "container-fluid">
+    <div class="navbar-header">
+        <a href="/accounts/register" class = "navbar-brand">NOTTY</a>
+    </div>
+
+    <div>
+        <ul class = "nav navbar-nav">
+
+
+            <li class="active"><a href = "/account/loggedin">{{fullname}}</a></li>
+
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li></li>
+            <li class = "navbar-right"><a href ="/account/logout">Logout </a></li>
+        </ul>
+    </div>
+</div>
+</nav>
+<div class = "container-fluid" style="opacity: 5;">
+    <h1 style = "color: black; font-family: 'Risque', cursive;"><em><strong style="font-size: 50px;">Your Notes!!</strong></em></h1>
+</div>
+<br>
+<br>
+
+<div class ="row">
+    <div class = "col-md-2"></div>
+    <div style="background-color: rgb(255,255,255);">
+    <div class = "col-md-1" > </div>
+    <div class = "col-md-6">
+
+
+
+        <div class = "text-center" style="font-size:30px;">
+            Add a NOTE!!
+        </div>
+        <form method="post" action="/account/loggedin/"> {% csrf_token%}
+            <input type="text" name = "notes" placeholder="notes" class="form-control" id="notes" value="{{innote}}">
+            <br/>
+            <input text="text" name = "Label" placeholder="Label" class="form-control width:60px" id="Label" value="{{inlabel}}">
+            <br/>
+            <div class="text-center"><input type = "submit" value ="ADD" name = "add" id = "add"/></div>
+        </form>
+
+    {% for u in un %}
+            <div style="background-color:rgba(128,255,128,0.4)">
+                <div style="font-size:35px;font-family: 'Lobster', cursive;">{{u.subject}}</div> <br/>  <div style="font-size: 25px;font-family: 'Indie Flower', cursive;">{{u.notes}}</div>
+    <form action = "/account/loggedin/" method="post">{% csrf_token %}
+        <input type = "submit" name ="delete" id = "delete" value = "Delete" />
+        <span class="glyphicons glyphicons-bin"><input type = "submit" name ="edit" id = "edit" value = "Edit" /></span>
+        <input type = "hidden" name="input" value="{{u.id}}">
+    </form>
+    </div>
+            <br/>
+
+    {% endfor %}
+
+
+
+    </div>
+
+    <div class = "col-md-1"> </div>
+    </div>
+    </div>
+    <div class = "col-md-2"></div>
+</div>
+</div>
+</body>
+</html>

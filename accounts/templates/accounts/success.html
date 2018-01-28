@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Register</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <style>@import url('https://fonts.googleapis.com/css?family=Risque');</style>
+</head>
+<body background = "https://thumbs.dreamstime.com/z/education-hero-header-image-mockup-tablet-pc-background-use-website-72186653.jpg">
+<nav class = "navbar navbar-default">
+    <div class = "container-fluid">
+    <div class="navbar-header">
+        <a href="/account/register" class = "navbar-brand">NOTTY</a>
+    </div>
+
+    <div>
+        <ul class = "nav navbar-nav">
+            <li><a href="/account/home">HOME </a></li>
+            <li><a href = "/account/register">Register</a></li>
+            <li class="active"><a href = "/account/login">Login</a></li>
+        </ul>
+    </div>
+</div>
+</nav>
+<div class = "container-fluid" style="opacity: 5;">
+    <h1 class = "text-center" style = "color: black; font-family: 'Risque', cursive;"><em><strong style="font-size: 50px; background-color:rgba(0,255,0,0.5)">You have been Registered!!</strong></em></h1>
+</div>
+<br>
+<br>
+
+<div class ="row">
+    <div class = "col-md-3"></div>
+    <div style="background-color: rgb(255,255,255);">
+    <div class = "col-md-1" > </div>
+    <div class = "col-md-4" style="background-color: rgba(255,255,255,0.4);">
+        <div class = "text-left" style="font-size:30px">Login:</div>
+
+        <form action = "/account/auth/" method="POST"> {% csrf_token%}
+
+            <table style="width: 100%">
+            <tr> <td><br></td> <td><br></td></tr>
+            <tr>
+                <td class="text-center"><label for="exampleInputEmail1">Username:</label></td>
+                <td class="text-center"><input type="text" class="form-control" id="username" name = "username" placeholder="Username"></td>
+            </tr>
+            <tr> <td><br></td> <td><br></td></tr>
+            <tr>
+                <td class="text-center"><label for="exampleInputEmail1">Password:</label></td>
+                <td class="text-center"><input type="password" class="form-control" id="password" name="password" placeholder="Password"></td>
+            </tr>
+            <tr> <td><br></td> <td><br></td></tr>
+
+        </table>
+        <div class="text-center"><input style = "width:40%;"type="submit"  class="form-control" id="submit" name="submit" value="Submit"></div>
+
+
+
+        </form>
+        <br/>
+        <div class="text-center"><em>New User?</em> <strong><a href = "/account/register">Register</a></strong><div>
+        <br/>
+    </div>
+
+    <div class = "col-md-1"> </div>
+    </div>
+    </div>
+    <div class = "col-md-3"></div>
+</div>
+</div>
+</body>
+</html>
